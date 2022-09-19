@@ -1,6 +1,6 @@
 import sys, pygame
-import auto_attack as at
 from player import Player
+import goblin
 
 pygame.init()
 
@@ -17,7 +17,7 @@ prayer_color = black
 
 screen = pygame.display.set_mode(windowsize)
 current_attack = at.attack_generator()
-print(current_attack.name)
+print(Goblin_King.pattern)
 
 while Player.state:
     screen.fill(black)
