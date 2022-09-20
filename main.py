@@ -1,12 +1,14 @@
 import sys, pygame
 from player import Player
-import goblin
+from goblin import Goblin_King
 
 pygame.init()
 
 windowsize = width, hight = 320, 240
 action_timer = 0
 clock = pygame.time.Clock()
+
+target_attack_index = 0
 
 black = (0,0,0)
 soulsplit_color = (240,240,240)
@@ -16,8 +18,8 @@ magic_color = (0,0,200)
 prayer_color = black
 
 screen = pygame.display.set_mode(windowsize)
-current_attack = at.attack_generator()
-print(Goblin_King.pattern)
+current_attack = Goblin_King.pattern[Goblin_King.state - 1][target_attack_index]
+print(len(Goblin_King.pattern[0]))
 
 while Player.state:
     screen.fill(black)
@@ -49,13 +51,15 @@ while Player.state:
 
     if action_timer > current_attack.timer:
         action_timer = 0
+        target_attack_index = (target_attack_index + 1) % len(Goblin_King.pattern[0])
+        print(current_attack.hit_amount)
         damage_taken = current_attack.attack_damage_calculation()
         Player.calculate_healthpoints(damage_taken, current_attack.type)
-        current_attack = at.attack_generator()
         print(damage_taken)
         if Player.healthpoints <= 0:
             Player.state = False
             print(Player.name, "has died for the last time.")
+        current_attack = Goblin_King.pattern[Goblin_King.state - 1][target_attack_index]
 
     action_timer += tick
     pygame.display.flip()

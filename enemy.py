@@ -13,6 +13,6 @@ class Enemy:
 
     def calculate_healthpoints(self, damage_taken):
         self.healthpoints = self.healthpoints - (damage_taken - self.defence)
-        if self.healthpoints =< 0:
+        if self.healthpoints <= 0:
             print(self.name, "has been defeated!")
             self.state = 0
