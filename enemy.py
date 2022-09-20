@@ -1,5 +1,3 @@
-import attack as at
-
 class Enemy:
     def __init__(self, name, icon, healthpoints, attack, defence, pattern, attack_types, state = 1):
         self.name = name
@@ -13,6 +11,8 @@ class Enemy:
 
     def calculate_healthpoints(self, damage_taken):
         self.healthpoints = self.healthpoints - (damage_taken - self.defence)
+        print(self.healthpoints)
         if self.healthpoints <= 0:
+            self.healthpoints = 0
             print(self.name, "has been defeated!")
             self.state = 0
