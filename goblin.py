@@ -30,7 +30,7 @@ class Goblin(Enemy):
 
 Goblin_King = Goblin(
     "Goblin King",
-    0,
+    "goblin_King.png",
     1000,
     0,
     0,

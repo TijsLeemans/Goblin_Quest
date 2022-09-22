@@ -4,7 +4,7 @@ from goblin import Goblin_King
 
 pygame.init()
 
-windowsize = width, hight = 320, 240
+windowsize = width, hight = 800, 600
 enemy_action_timer = 0
 player_action_timer = 0
 clock = pygame.time.Clock()
@@ -14,9 +14,11 @@ target_attack_index = 0
 black = (0,0,0)
 
 screen = pygame.display.set_mode(windowsize)
+enemy_icon = pygame.image.load(Goblin_King.icon)
 enemy_current_attack = Goblin_King.pattern[Goblin_King.state - 1][target_attack_index]
 # print(len(Goblin_King.pattern[0]))
 player_current_attack = Player.idle
+
 
 def handle_inputs(events):
     global player_action_timer, player_current_attack
@@ -43,6 +45,7 @@ while Player.state & Goblin_King.state != 0:
     screen.fill(black)
     tick = clock.tick()
 
+    pygame.Surface.blit(enemy_icon (400,400))
     handle_inputs(pygame.event.get())
 
     if player_current_attack.name != "Idle":

@@ -16,3 +16,4 @@ class Enemy:
             self.healthpoints = 0
             print(self.name, "has been defeated!")
             self.state = 0
+    
