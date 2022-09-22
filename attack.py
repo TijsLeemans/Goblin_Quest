@@ -14,7 +14,6 @@ class Attack:
     def attack_damage_calculation(self):
         damage_output = 0
         local_hit_amount = self.hit_amount
-        print("Hit Amount", self.hit_amount)
         while local_hit_amount > 0:
             damage_output = damage_output + (randrange(self.damage_variance) + self.minimal_damage)
             self.timer -= self.multihit_timer

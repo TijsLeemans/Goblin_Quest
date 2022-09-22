@@ -38,7 +38,6 @@ def handle_inputs(events):
                 player_action_timer = 0
                 # print("Magic go brrrrrrr")
                 player_current_attack = Player.magic_blast
-                print(player_current_attack.name)
 
 while Player.state & Goblin_King.state != 0:
     screen.fill(black)
@@ -49,9 +48,8 @@ while Player.state & Goblin_King.state != 0:
     if player_current_attack.name != "Idle":
         if player_action_timer > player_current_attack.timer:
             player_action_timer = 0
-            print("min dmg", player_current_attack.minimal_damage, "max dmg", player_current_attack.damage_variance)
             damage_taken = player_current_attack.attack_damage_calculation()
-            print("dmg dealth", damage_taken)
+            print("Your attack deals: ", damage_taken)
             Goblin_King.calculate_healthpoints(damage_taken)
             player_current_attack = Player.idle
             # print(damage_taken)
